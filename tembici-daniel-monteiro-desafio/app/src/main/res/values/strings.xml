@@ -2,4 +2,6 @@
     <string name="app_name">Tembici Desafio</string>
     <string name="str_title_progress_loading">Carregando...</string>
     <string name="msg_click">Click</string>
+    <string name="title_error">Ocoreu Um Erro</string>
+    <string name="msg_error">Ocorreu um erro interno. Por favor, tente novamente mais tarde.</string>
 </resources>
