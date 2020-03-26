@@ -1,7 +1,11 @@
 package br.com.tembici.desafio.view.activities.pull.requests
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import br.com.tembici.desafio.R
 import br.com.tembici.desafio.model.PullRequest
 import br.com.tembici.desafio.network.Connection
@@ -19,7 +23,6 @@ import retrofit2.Response
  */
 
 class PullRequestsActivities : BaseActivity(), PullRequestsPresenterView.ViewReturnPullRequests {
-
     var loginUser = ""
     var repositoryName = ""
 
@@ -36,6 +39,15 @@ class PullRequestsActivities : BaseActivity(), PullRequestsPresenterView.ViewRet
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         callPullRequests()
+
+        lvPullRequests.setOnItemClickListener { adapterView, view, i, l ->
+            val itemPullRequest = adapterView!!.getItemAtPosition(i) as PullRequest
+
+            val openURL = Intent(Intent.ACTION_VIEW)
+            openURL.data = Uri.parse(itemPullRequest.html_url)
+            startActivity(openURL)
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -48,7 +60,6 @@ class PullRequestsActivities : BaseActivity(), PullRequestsPresenterView.ViewRet
 
     private fun setAdapterList(listItems: ArrayList<PullRequest>) {
         val adapter = PullRequestsAdapter(this, listItems)
-
         lvPullRequests.adapter = adapter
     }
 

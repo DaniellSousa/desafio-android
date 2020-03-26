@@ -32,7 +32,7 @@ data class OwnerRepository (
 data class PullRequest (
     var title: String? = "",
     var body: String? = "",
-    var url: String? = "",
+    var html_url: String? = "",
     var base: BasePullRequest?,
     var user: UserPullRequest?,
     var created_at: String? = ""
