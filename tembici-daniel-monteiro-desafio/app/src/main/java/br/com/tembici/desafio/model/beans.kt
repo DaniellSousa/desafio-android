@@ -15,7 +15,9 @@ data class RepositoriesReturn (
 data class ItemRepository (
     var id: String? = "",
     var name: String? = "",
+    var description: String? = "",
     var full_name: String? = "",
+    var created_at: String? = "",
     var forks: Int? = 0,
     var stargazers_count: Int? = 0,
     var owner: OwnerRepository?
@@ -24,9 +26,7 @@ data class ItemRepository (
 data class OwnerRepository (
     var login: String? = "",
     var id: Int? = 0,
-    var avatar_url: String? = "",
-    var created_at: String? = "",
-    var description: String? = ""
+    var avatar_url: String? = ""
 ) {}
 
 data class PullRequest (

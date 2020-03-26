@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">tembici-daniel-monteiro-desafio</string>
+    <string name="app_name">Tembici Desafio</string>
+    <string name="str_title_progress_loading">Carregando...</string>
+    <string name="msg_click">Click</string>
 </resources>

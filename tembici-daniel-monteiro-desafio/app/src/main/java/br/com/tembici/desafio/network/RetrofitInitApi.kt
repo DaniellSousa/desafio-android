@@ -33,7 +33,7 @@ class RetrofitInitApi {
     }
 
     companion object {
-        public val BASE_URL = ""
+        public val BASE_URL = "https://api.github.com/"
         private var apiInit: RetrofitInitApi? = null
 
         val instance: RetrofitInitApi get() {
