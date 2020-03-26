@@ -1,5 +1,6 @@
 package br.com.tembici.desafio.view.activities.repositories
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import br.com.tembici.desafio.model.RepositoriesReturn
 import br.com.tembici.desafio.network.Connection
 import br.com.tembici.desafio.presenter.data.RepositoriesPresenterData
 import br.com.tembici.desafio.presenter.view.RepositoriesPresenterView
+import br.com.tembici.desafio.view.activities.pull.requests.PullRequestsActivities
 import br.com.tembici.desafio.view.utils.BaseActivity
 import kotlinx.android.synthetic.main.activity_repositories.*
 import retrofit2.Response
@@ -40,6 +42,15 @@ class RepositoriesActivity : BaseActivity(), AbsListView.OnScrollListener,
         setUpInicialConfigActivity()
 
         lvRepositories.setOnScrollListener(this)
+
+        lvRepositories.setOnItemClickListener { adapterView, view, i, l ->
+            val item = adapterView.getItemAtPosition(i) as ItemRepository?
+
+            val intent = Intent(this@RepositoriesActivity, PullRequestsActivities::class.java)
+            intent.putExtra("loginUser", item!!.owner!!.login)
+            intent.putExtra("repositoryName", item.name)
+            startActivity(intent)
+        }
     }
 
     private fun setAdapterList(listItems: ArrayList<ItemRepository>) {
